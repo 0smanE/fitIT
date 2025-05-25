@@ -21,26 +21,26 @@ const fetchTargets = async () => {
   return await res.json();
 };
 
-function toggleExerciseInWorkout(workoutId, exerciseId, callback) {
-  const sqlCheck = `SELECT * FROM workout_exercises WHERE workout_id = ? AND exercise_id = ?`;
-  db.get(sqlCheck, [workoutId, exerciseId], (err, row) => {
-    if (err) return callback(err);
+// function toggleExerciseInWorkout(workoutId, exerciseId, callback) {
+//   const sqlCheck = `SELECT * FROM workout_exercises WHERE workout_id = ? AND exercise_id = ?`;
+//   db.get(sqlCheck, [workoutId, exerciseId], (err, row) => {
+//     if (err) return callback(err);
 
-    if (row) {
-      const sqlDelete = `DELETE FROM workout_exercises WHERE workout_id = ? AND exercise_id = ?`;
-      db.run(sqlDelete, [workoutId, exerciseId], function (err2) {
-        if (err2) return callback(err2);
-        callback(null, 'Exercise removed from workout');
-      });
-    } else {
-      const sqlInsert = `INSERT INTO workout_exercises (workout_id, exercise_id) VALUES (?, ?)`;
-      db.run(sqlInsert, [workoutId, exerciseId], function (err2) {
-        if (err2) return callback(err2);
-        callback(null, 'Exercise added to workout');
-      });
-    }
-  });
-}
+//     if (row) {
+//       const sqlDelete = `DELETE FROM workout_exercises WHERE workout_id = ? AND exercise_id = ?`;
+//       db.run(sqlDelete, [workoutId, exerciseId], function (err2) {
+//         if (err2) return callback(err2);
+//         callback(null, 'Exercise removed from workout');
+//       });
+//     } else {
+//       const sqlInsert = `INSERT INTO workout_exercises (workout_id, exercise_id) VALUES (?, ?)`;
+//       db.run(sqlInsert, [workoutId, exerciseId], function (err2) {
+//         if (err2) return callback(err2);
+//         callback(null, 'Exercise added to workout');
+//       });
+//     }
+//   });
+// }
 const deleteWorkout = (workoutId, callback) => {
   const sqlDelete = `DELETE FROM workouts WHERE id = ?`;
   db.run(sqlDelete, [workoutId], function (err) {

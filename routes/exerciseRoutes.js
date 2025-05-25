@@ -29,23 +29,23 @@ router.get("/targets", async (req, res) => {
   }
 });
 
-router.put("/workout/:id", (req, res) => {
-  const workoutId = req.params.id;
-  const { exerciseId } = req.body;
+// router.put("/workout/:id", (req, res) => {
+//   const workoutId = req.params.id;
+//   const { exerciseId } = req.body;
 
-  if (!exerciseId) {
-    return res.status(400).json({ error: "Exercise ID is required" });
-  }
+//   if (!exerciseId) {
+//     return res.status(400).json({ error: "Exercise ID is required" });
+//   }
 
-  exerciseService.toggleExerciseInWorkout(
-    workoutId,
-    exerciseId,
-    (err, message) => {
-      if (err) return res.status(500).json({ error: err.message });
-      res.json({ message });
-    }
-  );
-});
+//   exerciseService.toggleExerciseInWorkout(
+//     workoutId,
+//     exerciseId,
+//     (err, message) => {
+//       if (err) return res.status(500).json({ error: err.message });
+//       res.json({ message });
+//     }
+//   );
+// });
 router.delete("/workout/:id", (req, res) => {
   const workoutId = req.params.id;
 
