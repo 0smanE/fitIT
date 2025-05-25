@@ -53,6 +53,6 @@ module.exports = {
   fetchAllExercises,
   fetchBodyParts,
   fetchTargets,
-  toggleExerciseInWorkout,
+  // toggleExerciseInWorkout,
   deleteWorkout,
 };
